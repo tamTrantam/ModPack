@@ -1,0 +1,51 @@
+
+build me a program in python:
++ create if not exists a database name mobdrops.db
+  structure : 
+        MOB TEXT NOT NULL,
+        ITEM TEXT ,
+        COUNT INT NOT NULL,
+        DROP_RATE FLOAT NOT NULL,
+ *drop_rate in range 0.0->1.0
+
++ file blank mobdropconfig.txt is a file with the structure :
+        - mob_IDs text
+        - Drops - this is a dictionary like structure that defines entries :
+             {id:"item_ID",Count:[int]b*the letter b behind the int is required*,tag:{dropchance:[float]d}}
+        *one mob_ID can contains multiple entries like this separated by a comma.
+
++ read the input from mobdropconfig.txt in format:
+    'mob_ID':'{entry_1},{entry_2},...{entry_n}', 
+
++ Import data into database, with each entry is a row: e.g  mob ID | item1 | count item1 |drop_rate item1.
+                                                            mob ID | item2 | count item2 |drop_rate item2.
+                                                            ...
+                                                            mob ID | item_n | count item_n |drop_rate item_n.
+    -import even if NO entries 'mob_ID' : '', make field possible default values
++ CREATE an interface using tkinter that includes :
+    - a BROWSE section that basically shows DISTINCT mob IDs: each mobs appear exactly one on this section , I can click on each mob IDs and select it. 
+    - an ENTRIES section :
+        - this section selects entries where mob_ID is selected and print them out in format :
+            item_n *there will be adjustment to this cell bellow*| count item_n|drop_rate item_n 
+            ...
+        - on the same row , after each entry, there will be an edit button and a delete button:
+            EDIT : convert the fields ( item_n, count item_n ,drop_rate item_n ) into input fields and allow user input
+            DEL : delete on database where mob_ID is selected and entry match
+        - below each row will be a hidden field that expands on clicking EDIT: contains a tick and a cross button - the tick saves entry in input field into database , the cross aborts all change and deselect EDIT MODE ( make entry field uneditable)
+    *there should be as many rows as there is entries of a mob_ID
+    - **the cell that contain item_ID (item_n) will be an expandable scroll selection that supports manual input aswell, these selections will be extracted from the file  item_ids.txt under the format:
+        'item_ID' -> e.g: minecraft:gold_ingot
+        when the scroll is open it will take the string from input field and give suggestions accordingly ( if field empty it will present all selections)
+    -a button to ADD an entry to the selected mob_ID
+    -a button to export database to a file name mobdropconfig_update.txt:
+        on click create file if not extst 
+        clear the file before writing
+        for DISTINCT mob_IDs export data in format :
+            'mob_ID':'{entry_1},{entry_2},...{entry_n}', 
+            * this means select entries where mob_ID match and combine them into this format
+        for mob_ID with empty entry (NO match item_ID found), write them as : 'mob_ID' : '',    
+
+    -a search bar that enable fuzzy search for mob_ID, OR mob_ID where Item_ID mentioned (type in mob ID or Item_ID and it will filter mobs contain that Item_ID in entries)
+
+# all GUI elements are spaced evenly and geomatrically 
+# the layout should be Column 1:{search bar at top, then the BROWSE section below it}, Column 2: {ENTRIES section ,ADD button below, the export button below the ADD button} 
