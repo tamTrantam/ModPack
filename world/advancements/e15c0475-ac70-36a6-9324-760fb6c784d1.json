@@ -114,7 +114,8 @@
       "field": "2025-05-29 12:28:27 +0700",
       "aspen_glade": "2025-05-29 11:54:13 +0700",
       "seasonal_forest": "2025-05-29 12:28:15 +0700",
-      "pumpkin_patch": "2025-05-29 11:55:19 +0700"
+      "pumpkin_patch": "2025-05-29 11:55:19 +0700",
+      "ominous_woods": "2025-05-29 15:22:05 +0700"
     },
     "done": false
   },
@@ -2832,7 +2833,8 @@
   },
   "minecraft:husbandry/balanced_diet": {
     "criteria": {
-      "porkchop": "2025-05-29 12:28:15 +0700"
+      "porkchop": "2025-05-29 12:28:15 +0700",
+      "rotten_flesh": "2025-05-29 15:15:47 +0700"
     },
     "done": false
   },
@@ -3025,6 +3027,102 @@
   "copycats:recipes/crafting/copycat_large_cogwheel": {
     "criteria": {
       "has_item": "2025-05-29 12:32:19 +0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/cooking/dog_food": {
+    "criteria": {
+      "has_any_ingredient": "2025-05-29 15:14:06 +0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/building_blocks/organic_compost_from_rotten_flesh": {
+    "criteria": {
+      "has_rotten_flesh": "2025-05-29 15:14:06 +0700"
+    },
+    "done": true
+  },
+  "refurbished_furniture:recipes/misc/slicing/brown_dye_from_rotten_flesh": {
+    "criteria": {
+      "has_rotten_flesh": "2025-05-29 15:14:06 +0700"
+    },
+    "done": true
+  },
+  "bbb:recipes/oak_beam": {
+    "criteria": {
+      "has_log": "2025-05-29 15:14:41 +0700"
+    },
+    "done": true
+  },
+  "bbb:recipes/oak_wall": {
+    "criteria": {
+      "has_logs": "2025-05-29 15:14:41 +0700"
+    },
+    "done": true
+  },
+  "bbb:recipes/oak_pallet": {
+    "criteria": {
+      "has_planks": "2025-05-29 15:14:41 +0700"
+    },
+    "done": true
+  },
+  "bbb:recipes/oak_frame": {
+    "criteria": {
+      "has_log": "2025-05-29 15:14:41 +0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_planks": {
+    "criteria": {
+      "has_logs": "2025-05-29 15:14:41 +0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_wood": {
+    "criteria": {
+      "has_log": "2025-05-29 15:14:41 +0700"
+    },
+    "done": true
+  },
+  "securitycraft:recipes/redstone/reinforced_sticky_piston": {
+    "criteria": {
+      "has_slime_ball": "2025-05-29 15:16:00 +0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/slime_block": {
+    "criteria": {
+      "has_slime_ball": "2025-05-29 15:16:00 +0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/lead": {
+    "criteria": {
+      "has_slime_ball": "2025-05-29 15:16:00 +0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/sticky_piston": {
+    "criteria": {
+      "has_slime_ball": "2025-05-29 15:16:00 +0700"
+    },
+    "done": true
+  },
+  "create:recipes/combat/crafting/appliances/netherite_diving_helmet_from_netherite": {
+    "criteria": {
+      "has_item": "2025-05-29 15:18:39 +0700"
+    },
+    "done": true
+  },
+  "aether:recipes/combat/netherite_helmet_repairing": {
+    "criteria": {
+      "has_netherite_helmet": "2025-05-29 15:18:39 +0700"
+    },
+    "done": true
+  },
+  "handcrafted:recipes/misc/fancy_painting": {
+    "criteria": {
+      "has_fancy_painting": "2025-05-29 15:20:33 +0700"
     },
     "done": true
   },
