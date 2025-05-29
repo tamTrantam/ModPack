@@ -27,25 +27,21 @@ This modpack includes:
 
 ### 💻 For TLauncher users:
 
-1. Open TLauncher.
-2. Click **Install ** version: `Forge-1.20.1`.
-3. Once installed, go to: `C:\Users<yourname>\AppData\Roaming.minecraft`
-4. Clone or download this repo into `.minecraft`, or copy:
-- `mods/`
-- `config/`
-5. Launch Minecraft using the installed Forge version.
-6. Enjoy!
+1. Clone or download this repo into `.minecraft\version`
+2. Launch Minecraft, in version choose the name of the pack "Mypack"
+3. in the folder, open Zero Tier One .msi and install 
+4. after installation open VPN_enable.bat in setupServer folder WITH ADMIN RIGHTS.
+5. JOIN SERVER WITH IP in server IP
 
 ---
 
 ## 🧩 Mod List
 
-| Mod Name          | Version | Description                     |
-|-------------------|---------|---------------------------------|
-| [e.g. Biomes O' Plenty] | x.x.x | Adds new biomes                |
-| [e.g. JEI]         | x.x.x   | Item and recipe viewer         |
-| [e.g. Xaero's Minimap] | x.x.x | Map + waypoints system         |
-<!-- Add more mods below -->
+| Mod Name          | Version       | Description                   |
+|-------------------|---------------|-------------------------------|
+| [Biomes O' Plenty]| 19.0.96       | Adds new biomes               |
+| [JEI]             | 15.20.0.160   | Item and recipe viewer        |
+| [Create]          | 0.5.1.j       | Mechanism machines            |
 
 You can view full mod `.jar` files in the `mods/` folder.
 
