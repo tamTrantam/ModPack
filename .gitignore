@@ -1,0 +1,16 @@
+tacz_backup/
+tacz/
+setupServer/
+mod_data/
+logs/
+libraries/
+local/
+kubejs/
+journeymap/
+crash-reports/
+.mixin.out/
+rhino.local.properties
+eula.txt
+run.sh
+run.bat
+user_jvm_args.txt
