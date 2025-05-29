@@ -1,9 +1,9 @@
 #The chance of pillager armed with a gun.
 #Range: 0.0 ~ 1.0
-"Armed Chance" = 0.5
+"Armed Chance" = 0.6
 #The chance of pillagers will drop their guns on death.
 #Range: 0.0 ~ 1.0
-"Drop Chance" = 0.3
+"Drop Chance" = 0.1
 #Whether bullets ignore damage immunity.
 "Ignore Damage Immunity" = false
 #Whether the gun has friend fire.
@@ -28,7 +28,7 @@
 [Pistol]
 	#The chance of pistol.
 	#Range: 0.0 ~ 1.0
-	"Pistol Chance" = 0.5
+	"Pistol Chance" = 0.3
 	#The power of pistol bullet.
 	#Range: 0 ~ 5000
 	"Pistol Power" = 2
@@ -36,7 +36,7 @@
 ["Assault Rifle"]
 	#The chance of assault rifle.
 	#Range: 0.0 ~ 1.0
-	"Assault Rifle Chance" = 0.2
+	"Assault Rifle Chance" = 0.1
 	#The power of assault rifle bullet.
 	#Range: 0 ~ 5000
 	"Assault Rifle Power" = 5
@@ -49,7 +49,7 @@
 ["Sniper's Rifle"]
 	#The chance of sniper's rifle.
 	#Range: 0.0 ~ 1.0
-	"Sniper's Rifle Chance" = 0.05
+	"Sniper's Rifle Chance" = 0.01
 	#The power of sniper's rifle bullet.
 	#Range: 0 ~ 5000
 	"Sniper's Rifle Power" = 15
@@ -92,20 +92,20 @@
 	"Villager Armed Chance" = 1.0
 	#The chance of shotgun.
 	#Range: 0.0 ~ 1.0
-	"Villager Shotgun Chance" = 0.2
+	"Villager Shotgun Chance" = 0.1
 	#The chance of pistol.
 	#Range: 0.0 ~ 1.0
 	"Villager Pistol Chance" = 0.5
 	#The chance of assault rifle.
 	#Range: 0.0 ~ 1.0
-	"Villager Assault Rifle Chance" = 0.2
+	"Villager Assault Rifle Chance" = 0.1
 	#The chance of sniper's rifle.
 	#Range: 0.0 ~ 1.0
-	"Villager Sniper's Rifle Chance" = 0.05
+	"Villager Sniper's Rifle Chance" = 0.01
 	#The chance of bazooka.
 	#Range: 0.0 ~ 1.0
-	"Villager Bazooka Chance" = 0.05
+	"Villager Bazooka Chance" = 0.0
 	#The chance of flamethrower.
 	#Range: 0.0 ~ 1.0
-	"Villager Flamethrower Chance" = 0.05
+	"Villager Flamethrower Chance" = 0.01
 
