@@ -12,49 +12,46 @@ EXPORT_FILE = 'mobdropconfig_update.txt'
 
 # Create DB if not exists
 def init_db():
-    conn = sqlite3.connect(DB_NAME)
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS mobdrops (
-        MOB TEXT NOT NULL,
-        ITEM TEXT,
-        COUNT INT NOT NULL,
-        DROP_RATE FLOAT NOT NULL
-    )''')
-    conn.commit()
-    conn.close()
+    with sqlite3.connect(DB_NAME) as conn:
+        c = conn.cursor()
+        c.execute('''CREATE TABLE IF NOT EXISTS mobdrops (
+            MOB TEXT NOT NULL,
+            ITEM TEXT,
+            COUNT INT NOT NULL,
+            DROP_RATE FLOAT NOT NULL
+        )''')
+        conn.commit()
 
 # Parse mobdropconfig.txt and insert to DB
 def import_from_config():
-    conn = sqlite3.connect(DB_NAME)
-    c = conn.cursor()
     if not os.path.exists(MOBDROP_CONFIG):
         open(MOBDROP_CONFIG, 'w').close()
-    
-    with open(MOBDROP_CONFIG, 'r', encoding='utf-8') as f:
-        content = f.read().strip()
-        if not content:
-            return
+    with sqlite3.connect(DB_NAME) as conn:
+        c = conn.cursor()
+        with open(MOBDROP_CONFIG, 'r', encoding='utf-8') as f:
+            content = f.read().strip()
+            if not content:
+                return
 
-        try:
-            data = ast.literal_eval('{' + content + '}')
-        except Exception as e:
-            print(f"Error parsing config: {e}")
-            return
+            try:
+                data = ast.literal_eval('{' + content + '}')
+            except Exception as e:
+                print(f"Error parsing config: {e}")
+                return
 
-        for mob, entries in data.items():
-            c.execute("DELETE FROM mobdrops WHERE MOB = ?", (mob,))
+            for mob, entries in data.items():
+                c.execute("DELETE FROM mobdrops WHERE MOB = ?", (mob,))
 
-            if not entries:
-                c.execute("INSERT INTO mobdrops (MOB, ITEM, COUNT, DROP_RATE) VALUES (?, NULL, 0, 0.0)", (mob,))
-                continue
+                if not entries:
+                    c.execute("INSERT INTO mobdrops (MOB, ITEM, COUNT, DROP_RATE) VALUES (?, NULL, 0, 0.0)", (mob,))
+                    continue
 
-            pattern = r'{id:"(.*?)",Count:(\d+)b,tag:{dropchance:(\d*\.?\d+)d}}'
-            matches = re.findall(pattern, entries)
-            for item_id, count, drop_rate in matches:
-                c.execute("INSERT INTO mobdrops (MOB, ITEM, COUNT, DROP_RATE) VALUES (?, ?, ?, ?)",
-                          (mob, item_id, int(count), float(drop_rate)))
-    conn.commit()
-    conn.close()
+                pattern = r'{id:"(.*?)",Count:(\d+)b,tag:{dropchance:(\d*\.?\d+)d}}'
+                matches = re.findall(pattern, entries)
+                for item_id, count, drop_rate in matches:
+                    c.execute("INSERT INTO mobdrops (MOB, ITEM, COUNT, DROP_RATE) VALUES (?, ?, ?, ?)",
+                              (mob, item_id, int(count), float(drop_rate)))
+        conn.commit()
 
 # Read item_ids.txt for suggestions
 def load_item_ids():
@@ -185,6 +182,14 @@ class MobDropEditor:
             for widget in (combobox, count_entry, rate_entry):
                 widget.bind('<Return>', lambda e: save_button.invoke())
 
+        self.mob_listbox.selection_clear(0, tk.END)
+        try:
+            idx = self.mobs.index(mob)
+            self.mob_listbox.selection_set(idx)
+            self.mob_listbox.see(idx)
+        except ValueError:
+            pass
+
     def add_entry(self):
         if not self.selected_mob:
             self.show_status("Please select a mob first.", error=True)
@@ -213,9 +218,14 @@ class MobDropEditor:
 
         def save():
             item = item_var.get()
-            count = count_var.get()
-            rate = rate_var.get()
-            if not item or not (0.0 <= rate <= 1.0):
+            try:
+                count = int(count_var.get())
+                rate = float(rate_var.get())
+            except Exception:
+                self.show_status("Invalid number input.", error=True)
+                messagebox.showerror("Invalid Input", "Count must be integer, rate must be float.")
+                return
+            if not item or count < 1 or not (0.0 <= rate <= 1.0):
                 self.show_status("Invalid input when adding entry.", error=True)
                 messagebox.showerror("Invalid Input", "Make sure all fields are valid.")
                 return
